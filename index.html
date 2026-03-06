@@ -284,150 +284,6 @@ html, body {
 
 .thinking-text { font-style: italic; color: var(--muted); font-size: 1rem; }
 
-/* RESULT */
-.result-hero {
-  background: var(--charcoal);
-  color: var(--cream);
-  padding: 1.8rem 1.8rem;
-  border-radius: 2px;
-  margin-bottom: 1rem;
-}
-
-.result-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--copper-light);
-  margin-bottom: 0.4rem;
-}
-
-.result-title {
-  font-size: 1.65rem;
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 0.3rem;
-}
-
-.result-theme { font-size: 0.9rem; color: rgba(245,240,232,0.5); font-style: italic; }
-
-.rblock {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  padding: 1.2rem 1.4rem;
-  margin-bottom: 0.8rem;
-}
-
-.rblock-title {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--copper);
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.rblock-text { font-size: 0.95rem; line-height: 1.65; color: var(--graphite); }
-
-.palette-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 0.65rem; }
-
-.swatch { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-
-.swatch-dot {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.9);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.2s;
-  cursor: default;
-}
-
-.swatch:hover .swatch-dot { transform: scale(1.15) translateY(-2px); }
-
-.swatch-role {
-  font-family: var(--font-sans);
-  font-size: 0.54rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.swatch-name {
-  font-size: 0.7rem;
-  color: var(--mid);
-  text-align: center;
-  max-width: 54px;
-  font-style: italic;
-  line-height: 1.2;
-}
-
-.palette-note { font-size: 0.86rem; font-style: italic; color: var(--muted); }
-
-.step-list { display: flex; flex-direction: column; }
-
-.step-row {
-  display: flex;
-  gap: 0.85rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.step-row:last-child { border-bottom: none; }
-
-.step-n {
-  font-family: var(--font-sans);
-  font-size: 0.58rem;
-  color: var(--copper);
-  width: 16px;
-  flex-shrink: 0;
-  padding-top: 3px;
-}
-
-.step-body { font-size: 0.92rem; line-height: 1.55; color: var(--graphite); }
-
-.criteria-list { display: flex; flex-direction: column; gap: 0.65rem; }
-
-.criterion { display: grid; grid-template-columns: 130px 1fr; gap: 0.75rem; align-items: center; }
-
-.crit-name {
-  font-family: var(--font-sans);
-  font-size: 0.63rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--mid);
-}
-
-.crit-bar-bg { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
-
-.crit-bar {
-  height: 100%;
-  background: var(--copper);
-  border-radius: 2px;
-  width: 0%;
-  transition: width 1s cubic-bezier(0.22,1,0.36,1);
-}
-
-.pro-tip {
-  border-left: 3px solid var(--copper);
-  padding-left: 1rem;
-  font-size: 0.93rem;
-  line-height: 1.6;
-  color: var(--graphite);
-}
-
-.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-.tag {
-  border: 1px solid var(--border);
-  color: var(--mid);
-  padding: 0.18rem 0.55rem;
-  font-size: 0.8rem;
-  border-radius: 20px;
-  font-style: italic;
-}
-
 .error-box {
   background: rgba(140,58,46,0.06);
   border-left: 3px solid #8c3a2e;
@@ -437,6 +293,141 @@ html, body {
   margin-top: 1rem;
   border-radius: 2px;
 }
+
+/* Paste response section */
+.paste-section { margin-top: 1.5rem; }
+
+.paste-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 0.6rem;
+}
+
+.paste-area {
+  width: 100%;
+  min-height: 140px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-serif);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--graphite);
+  resize: vertical;
+  transition: border-color 0.2s;
+  display: block;
+}
+
+.paste-area:focus { outline: none; border-color: var(--copper); }
+.paste-area::placeholder { color: var(--muted); font-style: italic; }
+
+.paste-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+}
+
+.paste-hint {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.choice-btn.choice-active {
+  border-color: var(--copper);
+  background: #fff8f2;
+  box-shadow: 0 0 0 1px var(--copper);
+}
+
+.choice-check {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--copper);
+  background: var(--white);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.choice-btn.choice-active .choice-check {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: white;
+}
+
+.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+.start-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.8rem 0 0;
+  color: var(--muted);
+}
+
+.start-divider::before,
+.start-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.start-divider span {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Result */
+.result-hero {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 1.8rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+.result-eyebrow { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--copper-light); margin-bottom: 0.4rem; }
+.result-title { font-size: 1.65rem; font-weight: 300; line-height: 1.2; margin-bottom: 0.3rem; }
+.result-theme { font-size: 0.9rem; color: rgba(245,240,232,0.5); font-style: italic; }
+
+.rblock { background: var(--white); border: 1px solid var(--border); border-radius: 2px; padding: 1.2rem 1.4rem; margin-bottom: 0.8rem; }
+.rblock-title { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 0.8rem; padding-bottom: 0.55rem; border-bottom: 1px solid var(--border); }
+.rblock-text { font-size: 0.95rem; line-height: 1.65; color: var(--graphite); }
+
+.palette-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 0.65rem; }
+.swatch { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.swatch-dot { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.9); box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.2s; }
+.swatch:hover .swatch-dot { transform: scale(1.15) translateY(-2px); }
+.swatch-role { font-family: var(--font-sans); font-size: 0.54rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.swatch-name { font-size: 0.7rem; color: var(--mid); text-align: center; max-width: 54px; font-style: italic; line-height: 1.2; }
+.palette-note { font-size: 0.86rem; font-style: italic; color: var(--muted); }
+
+.step-list { display: flex; flex-direction: column; }
+.step-row { display: flex; gap: 0.85rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+.step-row:last-child { border-bottom: none; }
+.step-n { font-family: var(--font-sans); font-size: 0.58rem; color: var(--copper); width: 16px; flex-shrink: 0; padding-top: 3px; }
+.step-body { font-size: 0.92rem; line-height: 1.55; color: var(--graphite); }
+
+.criteria-list { display: flex; flex-direction: column; gap: 0.65rem; }
+.criterion { display: grid; grid-template-columns: 130px 1fr; gap: 0.75rem; align-items: center; }
+.crit-name { font-family: var(--font-sans); font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); }
+.crit-bar-bg { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.crit-bar { height: 100%; background: var(--copper); border-radius: 2px; width: 0%; transition: width 1s cubic-bezier(0.22,1,0.36,1); }
+.pro-tip { border-left: 3px solid var(--copper); padding-left: 1rem; font-size: 0.93rem; line-height: 1.6; color: var(--graphite); }
 
 .ai-badge {
   display: flex;
@@ -745,14 +736,16 @@ var STEPS = [
   },
   {
     id: 'metals', name: 'Metals', label: 'The metalwork',
-    text: 'How will you handle any metal elements?',
-    hint: 'Even if minimal, metal treatment defines the technical ambition of the piece.',
+    text: 'How will you handle metal elements?',
+    hint: 'Select all that apply. NMM types can be combined on the same piece.',
     layout: 'one-col',
+    multi: true,
     choices: [
-      { icon: 'A', value: 'nmm_gold', label: 'NMM Gold', desc: 'Non-metallic metal - painted shine with matte paint' },
-      { icon: 'B', value: 'nmm_steel', label: 'NMM Steel / Silver', desc: 'Cold NMM with stark contrast' },
-      { icon: 'C', value: 'tmm', label: 'True Metallic Metal (TMM)', desc: 'Real metallic paints with glazes and polish' },
-      { icon: 'D', value: 'no_metals', label: 'No Significant Metals', desc: 'Organic subject - focus on skin and cloth' }
+      { icon: 'A', value: 'nmm_gold', label: 'NMM Gold', desc: 'Non-metallic metal - warm painted shine' },
+      { icon: 'B', value: 'nmm_steel', label: 'NMM Steel / Silver', desc: 'Cold NMM with stark high contrast' },
+      { icon: 'C', value: 'nmm_copper', label: 'NMM Copper / Bronze', desc: 'Warm reddish NMM, oxidised patina potential' },
+      { icon: 'D', value: 'tmm', label: 'True Metallic Metal (TMM)', desc: 'Real metallic paints with glazes and polish' },
+      { icon: 'E', value: 'no_metals', label: 'No Significant Metals', desc: 'Organic subject - focus on skin and cloth' }
     ]
   },
   {
@@ -783,7 +776,7 @@ var STEPS = [
 ];
 
 var TOTAL = STEPS.length;
-var state = { screen: 'start', step: 0, answers: {}, labels: {}, result: null, error: null, skinBaseColor: '#c8845a' };
+var state = { screen: 'start', step: 0, answers: {}, labels: {}, result: null, error: null, skinBaseColor: '#c8845a', generatedPrompt: '', pastedResponse: '' };
 
 function render() {
   updateDots();
@@ -795,6 +788,7 @@ function render() {
   if (state.screen === 'start') el.innerHTML = htmlStart();
   else if (state.screen === 'questions') el.innerHTML = htmlQuestion();
   else if (state.screen === 'prompt') el.innerHTML = htmlPrompt();
+  else if (state.screen === 'result') el.innerHTML = htmlResult();
 
   bind();
   setTimeout(function() {
@@ -811,7 +805,7 @@ function updateDots() {
   var html = '';
   for (var i = 0; i < TOTAL; i++) {
     var cls = '';
-    if (i < state.step || state.screen === 'prompt') cls = 'done';
+    if (i < state.step || state.screen === 'prompt' || state.screen === 'result') cls = 'done';
     else if (i === state.step && state.screen === 'questions') cls = 'active';
     html += '<div class="dot ' + cls + '"></div>';
   }
@@ -819,9 +813,10 @@ function updateDots() {
 }
 
 function htmlStart() {
+  var pasted = state.pastedResponse || '';
   return '<div class="eyebrow">Competition Painting Advisor</div>' +
     '<h1 class="start-title">Paint your bust with <em>intention</em></h1>' +
-    '<p class="start-body">Answer six focused questions and receive a complete competition strategy: skin tone palette, lighting plan, NMM or TMM approach, judging criteria focus, and a step-by-step painting guide.</p>' +
+    '<p class="start-body">Answer six focused questions and receive a tailored prompt to paste into any AI. Or if you already have an AI response, paste it below to render it as a visual guide.</p>' +
     '<div class="feature-grid">' +
     '<div class="feature-item">Skin tone palettes</div>' +
     '<div class="feature-item">OSL lighting theory</div>' +
@@ -830,11 +825,26 @@ function htmlStart() {
     '<div class="feature-item">Step-by-step technique plan</div>' +
     '<div class="feature-item">Narrative storytelling tips</div>' +
     '</div>' +
-    '<button class="btn-primary" id="start-btn">Begin the Analysis</button>';
+    '<button class="btn-primary" id="start-btn">Build my prompt</button>' +
+
+    '<div class="start-divider"><span>or</span></div>' +
+
+    '<div class="paste-section">' +
+    '<div class="paste-label">Already have an AI response? Paste it here</div>' +
+    '<textarea class="paste-area" id="paste-area" placeholder="Paste the JSON response from ChatGPT, Claude, Gemini...">' + escHtml(pasted) + '</textarea>' +
+    '<div class="paste-footer">' +
+    '<span class="paste-hint" id="paste-hint">' + (pasted.length > 0 ? pasted.length + ' characters' : '') + '</span>' +
+    '<button class="btn-primary" id="build-btn"' + (pasted.length < 10 ? ' disabled' : '') + '>Build visual guide</button>' +
+    '</div>' +
+    (state.error ? '<div class="error-box" style="margin-top:0.7rem">' + state.error + '</div>' : '') +
+    '</div>';
 }
 
 function htmlQuestion() {
   var q = STEPS[state.step];
+  var isMulti = !!q.multi;
+  var selected = isMulti ? (state.answers[q.id] || []) : null;
+
   var html = '<div class="q-label">' + q.label + '</div>' +
     '<h2 class="q-text">' + q.text + '</h2>' +
     '<p class="q-hint">' + q.hint + '</p>' +
@@ -842,23 +852,34 @@ function htmlQuestion() {
 
   for (var i = 0; i < q.choices.length; i++) {
     var c = q.choices[i];
-    html += '<button class="choice-btn" data-value="' + c.value + '" data-label="' + c.label + '">' +
+    var isActive = isMulti ? (selected.indexOf(c.value) !== -1) : false;
+    html += '<button class="choice-btn' + (isActive ? ' choice-active' : '') + '" data-value="' + c.value + '" data-label="' + c.label + '">' +
       '<span class="c-icon">' + c.icon + '</span>' +
       '<span><strong class="c-strong">' + c.label + '</strong><span class="c-desc">' + c.desc + '</span></span>' +
+      (isMulti ? '<span class="choice-check">' + (isActive ? '&#10003;' : '') + '</span>' : '') +
       '</button>';
   }
 
   html += '</div>';
 
-  // Color picker shown on skin_tone step
+  // Color picker on skin_tone step — with standalone "use this colour" button
   if (q.id === 'skin_tone') {
     var col = state.skinBaseColor || '#c8845a';
     html += '<div class="color-picker-row">' +
-      '<div class="color-picker-label"><strong>Base skin colour</strong>Optional — pick the primary hue of your skin tone</div>' +
+      '<div class="color-picker-label"><strong>Or pick a custom base colour</strong>Skip the options above and go straight from your chosen hue</div>' +
       '<div class="color-preview" style="background:' + col + '" title="Click to pick colour">' +
       '<input type="color" id="skin-color-input" value="' + col + '">' +
       '</div>' +
       '<span class="color-hex" id="color-hex-display">' + col + '</span>' +
+      '<button class="btn-primary" id="use-color-btn" style="padding:0.5rem 1rem;font-size:0.68rem">Use this colour</button>' +
+      '</div>';
+  }
+
+  // Multi-select confirm button
+  if (isMulti) {
+    var hasSelection = selected && selected.length > 0;
+    html += '<div style="margin-top:0.8rem;text-align:right">' +
+      '<button class="btn-primary" id="multi-confirm-btn"' + (hasSelection ? '' : ' disabled') + '>Continue</button>' +
       '</div>';
   }
 
@@ -872,9 +893,10 @@ function htmlQuestion() {
 
 function htmlPrompt() {
   var txt = state.generatedPrompt || '';
+  var pasted = state.pastedResponse || '';
   return '<div class="eyebrow">Your prompt is ready</div>' +
     '<h2 class="q-text" style="margin-bottom:0.5rem">Copy and paste into any AI</h2>' +
-    '<p class="q-hint">Works with Claude.ai, ChatGPT, Gemini, Copilot — any chat AI. Just paste and send.</p>' +
+    '<p class="q-hint">The prompt asks the AI to reply in a specific JSON format. Once you get the response, paste it below and this app will render it as a visual guide — no extra step needed.</p>' +
 
     '<div class="prompt-export-box">' +
     '<div class="prompt-export-text" id="prompt-text">' + escHtml(txt) + '</div>' +
@@ -884,10 +906,143 @@ function htmlPrompt() {
     '</div>' +
     '</div>' +
 
-    '<div class="nav-row" style="margin-top:1.2rem">' +
+    '<div class="paste-section">' +
+    '<div class="paste-label">Paste the AI response here</div>' +
+    '<textarea class="paste-area" id="paste-area" placeholder="Paste what ChatGPT, Claude, or any AI replied...">' + escHtml(pasted) + '</textarea>' +
+    '<div class="paste-footer">' +
+    '<span class="paste-hint" id="paste-hint">' + (pasted.length > 0 ? pasted.length + ' characters' : 'Nothing pasted yet') + '</span>' +
+    '<button class="btn-primary" id="build-btn"' + (pasted.length < 10 ? ' disabled' : '') + '>Build visual guide</button>' +
+    '</div>' +
+    (state.error ? '<div class="error-box" style="margin-top:0.7rem">' + state.error + '</div>' : '') +
+    '</div>' +
+
+    '<div class="nav-row" style="margin-top:0.8rem">' +
     '<button class="btn-ghost" id="back-btn">Back</button>' +
-    '<button class="btn-primary" id="restart-btn">Start over</button>' +
+    '<button class="btn-ghost" id="restart-btn">Start over</button>' +
     '</div>';
+}
+
+function htmlResult() {
+  var r = state.result;
+  if (!r) return '';
+
+  var swatches = '';
+  var palette = r.palette || [];
+  for (var i = 0; i < palette.length; i++) {
+    var p = palette[i];
+    swatches += '<div class="swatch">' +
+      '<div class="swatch-dot" style="background:' + p.hex + '"></div>' +
+      '<div class="swatch-role">' + (p.role || '') + '</div>' +
+      '<div class="swatch-name">' + p.name + '</div>' +
+      '</div>';
+  }
+
+  var steps = '';
+  var stepList = r.steps || [];
+  for (var i = 0; i < stepList.length; i++) {
+    steps += '<div class="step-row">' +
+      '<div class="step-n">0' + (i + 1) + '</div>' +
+      '<div class="step-body">' + stepList[i] + '</div>' +
+      '</div>';
+  }
+
+  var criteria = '';
+  var critList = r.criteria || [];
+  for (var i = 0; i < critList.length; i++) {
+    var score = Number(critList[i].score) || 70;
+    criteria += '<div class="criterion">' +
+      '<div class="crit-name">' + critList[i].area + '</div>' +
+      '<div class="crit-bar-bg"><div class="crit-bar" data-w="' + score + '"></div></div>' +
+      '</div>';
+  }
+
+  var lpPaintsHtml = '';
+  var lpMixesHtml = '';
+  var lp = r.limitedPalette || {};
+  var lpPaints = lp.paints || [];
+  var lpMixes = lp.mixes || [];
+  for (var i = 0; i < lpPaints.length; i++) {
+    lpPaintsHtml += '<div class="lp-paint">' +
+      '<div class="lp-swatch" style="background:' + lpPaints[i].hex + '"></div>' +
+      '<div class="lp-paint-info"><span class="lp-paint-name">' + lpPaints[i].name + '</span>' +
+      '<span class="lp-paint-role">' + lpPaints[i].role + '</span></div></div>';
+  }
+  for (var i = 0; i < lpMixes.length; i++) {
+    lpMixesHtml += '<div class="lp-mix-row"><div class="lp-mix-dot"></div>' +
+      '<div class="lp-mix-text">' + lpMixes[i] + '</div></div>';
+  }
+
+  return '<div class="result-hero">' +
+    '<div class="result-eyebrow">Your competition strategy</div>' +
+    '<div class="result-title">' + (r.title || 'Painting Strategy') + '</div>' +
+    '<div class="result-theme">' + (r.theme || '') + '</div>' +
+    '</div>' +
+
+    (swatches ? '<div class="rblock"><div class="rblock-title">Skin Tone Palette</div>' +
+    '<div class="palette-row">' + swatches + '</div>' +
+    '<p class="palette-note">' + (r.paletteNote || '') + '</p></div>' : '') +
+
+    (r.lighting ? '<div class="rblock"><div class="rblock-title">Lighting Strategy</div>' +
+    '<p class="rblock-text">' + r.lighting + '</p></div>' : '') +
+
+    (r.narrative ? '<div class="rblock"><div class="rblock-title">Narrative and Storytelling</div>' +
+    '<p class="rblock-text">' + r.narrative + '</p></div>' : '') +
+
+    (criteria ? '<div class="rblock"><div class="rblock-title">Judging Criteria Focus</div>' +
+    '<div class="criteria-list">' + criteria + '</div></div>' : '') +
+
+    (steps ? '<div class="rblock"><div class="rblock-title">Step-by-Step Painting Plan</div>' +
+    '<div class="step-list">' + steps + '</div></div>' : '') +
+
+    (r.proTip ? '<div class="rblock"><div class="rblock-title">Master Tip</div>' +
+    '<div class="pro-tip">' + r.proTip + '</div></div>' : '') +
+
+    (lpPaintsHtml ? '<div class="lp-block"><div class="lp-title">Limited Palette Challenge</div>' +
+    '<div class="lp-subtitle">' + (lp.intro || '') + '</div>' +
+    '<div class="lp-paints">' + lpPaintsHtml + '</div>' +
+    (lpMixesHtml ? '<div class="lp-mixes"><div class="lp-mixes-label">Key mixes to practise</div>' + lpMixesHtml + '</div>' : '') +
+    '</div>' : '') +
+
+    '<div class="nav-row" style="margin-top:1.5rem">' +
+    '<button class="btn-ghost" id="back-btn">Edit response</button>' +
+    '<button class="btn-ghost" id="restart-btn">Start over</button>' +
+    '</div>';
+}
+
+function parseResponse() {
+  var pasted = (state.pastedResponse || '').trim();
+  var returnScreen = state.screen; // remember where we came from
+
+  pasted = pasted.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/i, '').trim();
+
+  var start = pasted.indexOf('{');
+  var end = pasted.lastIndexOf('}');
+  if (start === -1 || end === -1) {
+    state.error = 'No JSON found. Make sure you copied the full AI response including the { and } braces.';
+    render();
+    return;
+  }
+
+  var json = pasted.slice(start, end + 1)
+    .replace(/\u2018|\u2019/g, "'")
+    .replace(/\u201c|\u201d/g, '"')
+    .replace(/\u2014|\u2013/g, '-');
+
+  try {
+    var parsed = JSON.parse(json);
+    if (Array.isArray(parsed.criteria)) {
+      for (var i = 0; i < parsed.criteria.length; i++) {
+        parsed.criteria[i].score = Number(parsed.criteria[i].score) || 70;
+      }
+    }
+    state.result = parsed;
+    state.error = null;
+    state.screen = 'result';
+    render();
+  } catch (err) {
+    state.error = 'Could not parse the JSON. The AI may have added extra text around it — try selecting just the { ... } block and pasting that.';
+    render();
+  }
 }
 
 function escHtml(str) {
@@ -897,24 +1052,58 @@ function escHtml(str) {
 function buildPrompt() {
   var a = state.answers;
   var l = state.labels;
-  return "You are a master competition miniature bust painter with extensive experience at Golden Demon, Crystal Brush, and Salon du Modelisme.\n\n" +
-    "Give me a full competition painting strategy for my bust with these characteristics:\n" +
-    "- Subject: " + (l.subject || a.subject) + "\n" +
-    "- Skin tone family: " + (l.skin_tone || a.skin_tone) + "\n" +
-    "- Primary skin base colour (my chosen hex): " + state.skinBaseColor + "\n" +
-    "- Lighting concept: " + (l.lighting || a.lighting) + "\n" +
-    "- Metal treatment: " + (l.metals || a.metals) + "\n" +
-    "- Target competition level: " + (l.competition || a.competition) + "\n" +
-    "- Emotional narrative: " + (l.narrative || a.narrative) + "\n\n" +
-    "Please give me:\n" +
-    "1. A evocative name and one-sentence theme for this scheme\n" +
-    "2. A skin tone palette of 6-8 colours with hex codes, anchored to my base colour " + state.skinBaseColor + ", showing the full range from deep shadow to brightest highlight with warm/cool temperature shifts\n" +
-    "3. A detailed lighting execution plan - where light hits, angle, intensity, and how OSL or ambient light interacts with the skin\n" +
-    "4. How to reinforce the emotional narrative through colour temperature and contrast choices\n" +
-    "5. Which competition judging criteria to prioritise (skin, contrast, colour harmony, NMM/TMM, narrative, finish) and why\n" +
-    "6. A step-by-step painting plan of 7-9 specific technique-level steps suited to the competition level\n" +
-    "7. One master tip that separates good from great at this level\n" +
-    "8. A limited palette challenge: give me only 5 widely available paints I could use to mix all the skin tones by hand, plus 4-6 specific mix recipes with ratios";
+  var schema = '{\n' +
+    '  "title": "5-7 word evocative name for this scheme",\n' +
+    '  "theme": "One sentence artistic vision",\n' +
+    '  "palette": [\n' +
+    '    { "name": "paint name", "hex": "#rrggbb", "role": "shadow|base|mid|highlight|accent|osl" }\n' +
+    '  ],\n' +
+    '  "paletteNote": "One sentence on warm-cool temperature shifts across the range",\n' +
+    '  "lighting": "2-3 sentences on technical lighting execution",\n' +
+    '  "narrative": "2 sentences on emotional storytelling through colour",\n' +
+    '  "criteria": [\n' +
+    '    { "area": "Skin and Flesh", "score": 0-100 },\n' +
+    '    { "area": "Contrast and Volume", "score": 0-100 },\n' +
+    '    { "area": "Colour Harmony", "score": 0-100 },\n' +
+    '    { "area": "NMM or TMM", "score": 0-100 },\n' +
+    '    { "area": "Narrative", "score": 0-100 },\n' +
+    '    { "area": "Technical Finish", "score": 0-100 }\n' +
+    '  ],\n' +
+    '  "steps": [\n' +
+    '    "Step 1 description", "Step 2 description"\n' +
+    '  ],\n' +
+    '  "proTip": "One advanced tip a judge would notice",\n' +
+    '  "limitedPalette": {\n' +
+    '    "intro": "One sentence learning goal",\n' +
+    '    "paints": [\n' +
+    '      { "name": "paint name", "hex": "#rrggbb", "role": "what it does" }\n' +
+    '    ],\n' +
+    '    "mixes": [\n' +
+    '      "2 parts X + 1 part Y = result description"\n' +
+    '    ]\n' +
+    '  }\n' +
+    '}';
+
+  var metals = state.answers.metals || [];
+  var nmmCount = Array.isArray(metals) ? metals.filter(function(v) { return v.indexOf('nmm') === 0; }).length : 0;
+  var lpPaintCount = nmmCount >= 2 ? '7' : '5';
+
+  return 'You are a master competition miniature bust painter with extensive experience at Golden Demon, Crystal Brush, and Salon du Modelisme.\n\n' +
+    'Give me a full competition painting strategy for my bust:\n' +
+    '- Subject: ' + (l.subject || a.subject) + '\n' +
+    '- Skin tone family: ' + (l.skin_tone || a.skin_tone) + '\n' +
+    '- Primary skin base colour (hex): ' + state.skinBaseColor + '\n' +
+    '- Lighting concept: ' + (l.lighting || a.lighting) + '\n' +
+    '- Metal treatment: ' + (state.labels.metals || (Array.isArray(metals) ? metals.join(', ') : metals)) + '\n' +
+    '- Target competition level: ' + (l.competition || a.competition) + '\n' +
+    '- Emotional narrative: ' + (l.narrative || a.narrative) + '\n\n' +
+    'IMPORTANT: Reply with ONLY a single raw JSON object. No explanation, no markdown, no text before or after. ' +
+    'Start your response with { and end with }. Use only straight quotes. ' +
+    'The palette should have 6-8 entries anchored to the base colour ' + state.skinBaseColor + ' with shadows darker and highlights lighter. ' +
+    'Criteria scores (0-100) represent how much to prioritise each area for this specific bust. ' +
+    'Steps should be 7-9 entries. ' +
+    'Limited palette should use exactly ' + lpPaintCount + ' widely available paints' + (lpPaintCount === '7' ? ' — the extra paints should cover the additional NMM metal types selected (' + metals.filter(function(v) { return v.indexOf('nmm') === 0; }).join(', ') + ')' : '') + '.\n\n' +
+    'Use exactly this JSON structure:\n' + schema;
 }
 
 function bind() {
@@ -951,7 +1140,9 @@ function bind() {
     if (state.screen === 'prompt') {
       state.screen = 'questions';
       state.step = TOTAL - 1;
-    } else {
+    } else if (state.screen === 'result') {
+      state.screen = 'prompt';
+    } else if (state.step > 0) {
       var prev = STEPS[state.step - 1];
       if (prev) { delete state.answers[prev.id]; delete state.labels[prev.id]; }
       state.step--;
@@ -962,8 +1153,25 @@ function bind() {
 
   var restartBtn = document.getElementById('restart-btn');
   if (restartBtn) restartBtn.onclick = function() {
-    state = { screen: 'start', step: 0, answers: {}, labels: {}, result: null, error: null, skinBaseColor: '#c8845a', generatedPrompt: '' };
+    state = { screen: 'start', step: 0, answers: {}, labels: {}, result: null, error: null, skinBaseColor: '#c8845a', generatedPrompt: '', pastedResponse: '' };
     render();
+  };
+
+  // Paste area — keep response in state as user types
+  var pasteArea = document.getElementById('paste-area');
+  if (pasteArea) {
+    pasteArea.addEventListener('input', function() {
+      state.pastedResponse = pasteArea.value;
+      var hint = document.getElementById('paste-hint');
+      var buildBtn = document.getElementById('build-btn');
+      if (hint) hint.textContent = pasteArea.value.length > 0 ? pasteArea.value.length + ' characters' : 'Nothing pasted yet';
+      if (buildBtn) buildBtn.disabled = pasteArea.value.length < 10;
+    });
+  }
+
+  var buildBtn = document.getElementById('build-btn');
+  if (buildBtn) buildBtn.onclick = function() {
+    if (state.pastedResponse && state.pastedResponse.length >= 10) parseResponse();
   };
 
   var colorInput = document.getElementById('skin-color-input');
@@ -977,21 +1185,91 @@ function bind() {
     });
   }
 
+  var useColorBtn = document.getElementById('use-color-btn');
+  if (useColorBtn) {
+    useColorBtn.onclick = function() {
+      // Advance with color as the skin tone answer
+      state.answers['skin_tone'] = 'custom_color';
+      state.labels['skin_tone'] = 'Custom colour: ' + state.skinBaseColor;
+      state.step++;
+      state.error = null;
+      render();
+    };
+  }
+
+  var multiConfirmBtn = document.getElementById('multi-confirm-btn');
+  if (multiConfirmBtn) {
+    multiConfirmBtn.onclick = function() {
+      var q = STEPS[state.step];
+      var selected = state.answers[q.id] || [];
+      if (selected.length === 0) return;
+      state.labels[q.id] = selected.map(function(v) {
+        var match = q.choices.filter(function(c) { return c.value === v; })[0];
+        return match ? match.label : v;
+      }).join(', ');
+      if (state.step < TOTAL - 1) {
+        state.step++;
+        state.error = null;
+        render();
+      } else {
+        state.generatedPrompt = buildPrompt();
+        state.screen = 'prompt';
+        render();
+      }
+    };
+  }
+
   var btns = document.querySelectorAll('.choice-btn');
   for (var i = 0; i < btns.length; i++) {
     (function(btn) {
       btn.onclick = function() {
         var q = STEPS[state.step];
-        state.answers[q.id] = btn.getAttribute('data-value');
-        state.labels[q.id] = btn.getAttribute('data-label');
-        if (state.step < TOTAL - 1) {
-          state.step++;
-          state.error = null;
-          render();
+
+        if (q.multi) {
+          // Toggle selection
+          var val = btn.getAttribute('data-value');
+          var selected = state.answers[q.id] || [];
+
+          // "No metals" is exclusive — selecting it clears others; selecting others clears it
+          if (val === 'no_metals') {
+            selected = selected.indexOf('no_metals') !== -1 ? [] : ['no_metals'];
+          } else {
+            var idx = selected.indexOf(val);
+            // Remove 'no_metals' if present
+            selected = selected.filter(function(v) { return v !== 'no_metals'; });
+            if (idx !== -1) {
+              selected.splice(idx, 1);
+            } else {
+              selected.push(val);
+            }
+          }
+          state.answers[q.id] = selected;
+
+          // Update button appearance immediately without full re-render
+          var allBtns = document.querySelectorAll('.choice-btn');
+          for (var j = 0; j < allBtns.length; j++) {
+            var bVal = allBtns[j].getAttribute('data-value');
+            var isNowActive = selected.indexOf(bVal) !== -1;
+            allBtns[j].className = 'choice-btn' + (isNowActive ? ' choice-active' : '');
+            var check = allBtns[j].querySelector('.choice-check');
+            if (check) check.innerHTML = isNowActive ? '&#10003;' : '';
+          }
+          var confirmBtn = document.getElementById('multi-confirm-btn');
+          if (confirmBtn) confirmBtn.disabled = selected.length === 0;
+
         } else {
-          state.generatedPrompt = buildPrompt();
-          state.screen = 'prompt';
-          render();
+          // Single select — advance immediately
+          state.answers[q.id] = btn.getAttribute('data-value');
+          state.labels[q.id] = btn.getAttribute('data-label');
+          if (state.step < TOTAL - 1) {
+            state.step++;
+            state.error = null;
+            render();
+          } else {
+            state.generatedPrompt = buildPrompt();
+            state.screen = 'prompt';
+            render();
+          }
         }
       };
     })(btns[i]);
