@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bust Atelier</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #f5f0e8;
+  --white: #faf8f4;
+  --charcoal: #1c1a18;
+  --graphite: #3a3835;
+  --mid: #6b6560;
+  --muted: #a09890;
+  --border: #ddd8ce;
+  --copper: #b5763a;
+  --copper-light: #d4914a;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Tenor Sans', sans-serif;
+}
+
+html, body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--font-serif);
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--charcoal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--copper-light);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  line-height: 1.3;
+}
+
+.logo-sub {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 300;
+}
+
+.progress-dots { display: flex; gap: 6px; align-items: center; }
+
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.3s;
+}
+.dot.done { background: var(--charcoal); }
+.dot.active { background: var(--copper); }
+
+/* START */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 0.6rem;
+}
+
+.start-title {
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 0.9rem;
+}
+
+.start-title em { font-style: italic; color: var(--copper); }
+
+.start-body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--mid);
+  margin-bottom: 1.8rem;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.88rem;
+  color: var(--graphite);
+  border-radius: 2px;
+}
+
+/* QUESTION */
+.q-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 0.5rem;
+}
+
+.q-text {
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.q-hint {
+  font-size: 0.93rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1.4rem;
+  line-height: 1.5;
+}
+
+.choices { display: grid; gap: 0.5rem; margin-bottom: 1.4rem; }
+.choices.two-col { grid-template-columns: 1fr 1fr; }
+.choices.one-col { grid-template-columns: 1fr; }
+
+.choice-btn {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  font-family: var(--font-serif);
+  width: 100%;
+}
+
+.choice-btn:hover {
+  border-color: var(--copper);
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(181,118,58,0.12);
+}
+
+.c-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; line-height: 1; }
+
+.c-strong {
+  display: block;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  font-family: var(--font-serif);
+}
+
+.c-desc {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.3;
+  font-family: var(--font-serif);
+}
+
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-primary {
+  background: var(--charcoal);
+  color: var(--cream);
+  border: none;
+  padding: 0.8rem 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.73rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover { background: var(--copper); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-ghost:hover { color: var(--charcoal); }
+
+.step-count {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* THINKING */
+.thinking { padding: 2rem 0; }
+
+.thinking-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 220px;
+  margin-bottom: 1rem;
+}
+
+.tbar {
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tbar::after {
+  content: '';
+  position: absolute;
+  left: -40%; top: 0; bottom: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+  animation: scan 1.6s ease-in-out infinite;
+}
+.tbar:nth-child(2)::after { animation-delay: 0.25s; }
+.tbar:nth-child(3)::after { animation-delay: 0.5s; }
+
+@keyframes scan { from { left: -40%; } to { left: 140%; } }
+
+.thinking-text { font-style: italic; color: var(--muted); font-size: 1rem; }
+
+/* RESULT */
+.result-hero {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 1.8rem 1.8rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.result-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--copper-light);
+  margin-bottom: 0.4rem;
+}
+
+.result-title {
+  font-size: 1.65rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.result-theme { font-size: 0.9rem; color: rgba(245,240,232,0.5); font-style: italic; }
+
+.rblock {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.rblock-title {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.rblock-text { font-size: 0.95rem; line-height: 1.65; color: var(--graphite); }
+
+.palette-row { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 0.65rem; }
+
+.swatch { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+
+.swatch-dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+  cursor: default;
+}
+
+.swatch:hover .swatch-dot { transform: scale(1.15) translateY(-2px); }
+
+.swatch-role {
+  font-family: var(--font-sans);
+  font-size: 0.54rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.swatch-name {
+  font-size: 0.7rem;
+  color: var(--mid);
+  text-align: center;
+  max-width: 54px;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.palette-note { font-size: 0.86rem; font-style: italic; color: var(--muted); }
+
+.step-list { display: flex; flex-direction: column; }
+
+.step-row {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.step-row:last-child { border-bottom: none; }
+
+.step-n {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  color: var(--copper);
+  width: 16px;
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+.step-body { font-size: 0.92rem; line-height: 1.55; color: var(--graphite); }
+
+.criteria-list { display: flex; flex-direction: column; gap: 0.65rem; }
+
+.criterion { display: grid; grid-template-columns: 130px 1fr; gap: 0.75rem; align-items: center; }
+
+.crit-name {
+  font-family: var(--font-sans);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.crit-bar-bg { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+
+.crit-bar {
+  height: 100%;
+  background: var(--copper);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1s cubic-bezier(0.22,1,0.36,1);
+}
+
+.pro-tip {
+  border-left: 3px solid var(--copper);
+  padding-left: 1rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--graphite);
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.tag {
+  border: 1px solid var(--border);
+  color: var(--mid);
+  padding: 0.18rem 0.55rem;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  font-style: italic;
+}
+
+.error-box {
+  background: rgba(140,58,46,0.06);
+  border-left: 3px solid #8c3a2e;
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  color: #8c3a2e;
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+
+.ai-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Limited palette block */
+.lp-block {
+  background: var(--charcoal);
+  border-radius: 2px;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.lp-title {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--copper-light);
+  margin-bottom: 0.3rem;
+}
+
+.lp-subtitle {
+  font-size: 0.88rem;
+  color: rgba(245,240,232,0.5);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+.lp-paints {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.lp-paint {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.lp-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.12);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.lp-paint-info { flex: 1; }
+
+.lp-paint-name {
+  font-size: 0.95rem;
+  color: var(--cream);
+  font-weight: 400;
+  display: block;
+}
+
+.lp-paint-role {
+  font-size: 0.8rem;
+  color: var(--copper-light);
+  font-style: italic;
+  display: block;
+}
+
+.lp-mixes {
+  border-top: 1px solid rgba(245,240,232,0.08);
+  padding-top: 1rem;
+}
+
+.lp-mixes-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.35);
+  margin-bottom: 0.7rem;
+}
+
+.lp-mix-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.55rem;
+}
+
+.lp-mix-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+  background: var(--copper);
+}
+
+.lp-mix-text {
+  font-size: 0.88rem;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.45;
+}
+
+.ai-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--copper);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+.fade-up { animation: fadeUp 0.38s ease forwards; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 400px) {
+  .choices.two-col { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .criterion { grid-template-columns: 100px 1fr; }
+}
+
+/* Prompt export box */
+.prompt-export-box {
+  background: var(--charcoal);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.prompt-export-text {
+  padding: 1.2rem 1.3rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(245,240,232,0.82);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.prompt-export-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.1rem;
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.prompt-export-hint {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.3);
+  text-transform: uppercase;
+}
+
+.copy-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--mid);
+  padding: 0.45rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover { border-color: var(--charcoal); color: var(--charcoal); }
+.copy-btn.copied { border-color: #4a7c59; color: #4a7c59; }
+.color-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.color-picker-label {
+  font-size: 0.88rem;
+  color: var(--mid);
+  font-style: italic;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.color-picker-label strong {
+  display: block;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  font-weight: 500;
+  margin-bottom: 0.15rem;
+}
+
+.color-preview {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-preview:hover { transform: scale(1.1); }
+
+.color-preview input[type="color"] {
+  position: absolute;
+  inset: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.color-hex {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  min-width: 52px;
+  text-align: right;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <div class="site-logo">
+      <div class="logo-mark">&#10022;</div>
+      <div>
+        <div class="logo-text">Bust Atelier</div>
+        <div class="logo-sub">Competition Advisor</div>
+      </div>
+    </div>
+    <div class="progress-dots" id="dots"></div>
+  </header>
+  <div id="screen"></div>
+</div>
+
+<script>
+var STEPS = [
+  {
+    id: 'subject', name: 'Subject', label: 'The bust before you',
+    text: 'What is the subject of your bust?',
+    hint: 'The subject defines the dominant skin tone, material storytelling, and emotional language.',
+    layout: 'two-col',
+    choices: [
+      { icon: 'A', value: 'human_warrior', label: 'Human Warrior / Knight', desc: 'Flesh, battle-wear, metal and leather' },
+      { icon: 'B', value: 'human_mage', label: 'Mage / Scholar', desc: 'Delicate skin, fabric, arcane focus' },
+      { icon: 'C', value: 'elf_fey', label: 'Elf / Fey Being', desc: 'Ethereal skin, pointed features' },
+      { icon: 'D', value: 'monster_creature', label: 'Monster / Creature', desc: 'Non-human skin tones, scales, fur' },
+      { icon: 'E', value: 'undead_demon', label: 'Undead / Daemon', desc: 'Desaturated or hellish flesh' },
+      { icon: 'F', value: 'historical', label: 'Historical / Portrait', desc: 'Realistic anatomy, period accuracy' }
+    ]
+  },
+  {
+    id: 'skin_tone', name: 'Skin Tone', label: 'The complexion',
+    text: 'What skin tone family are you working with?',
+    hint: 'Skin is always the focal point of a bust. Your tonal family shapes everything else.',
+    layout: 'two-col',
+    choices: [
+      { icon: 'A', value: 'very_fair', label: 'Very Fair / Pale', desc: 'Porcelain, northern European, undead tint' },
+      { icon: 'B', value: 'fair_warm', label: 'Fair and Warm', desc: 'Peach, light Mediterranean' },
+      { icon: 'C', value: 'olive_medium', label: 'Olive / Medium', desc: 'Warm mid-tones, subtle green' },
+      { icon: 'D', value: 'brown_deep', label: 'Brown / Deep', desc: 'Rich siennas, mahogany, deep warmth' },
+      { icon: 'E', value: 'very_dark', label: 'Very Dark / Ebony', desc: 'Deep brown, rich contrast work' },
+      { icon: 'F', value: 'non_human', label: 'Non-Human', desc: 'Green, grey, blue, purple skin' }
+    ]
+  },
+  {
+    id: 'lighting', name: 'Lighting', label: 'The light source',
+    text: 'What lighting concept do you want to build?',
+    hint: 'Lighting is the single biggest factor in competition judging. Choose with intention.',
+    layout: 'two-col',
+    choices: [
+      { icon: 'A', value: 'natural_top', label: 'Natural Top Light', desc: 'Soft daylight from above, classical' },
+      { icon: 'B', value: 'warm_candle', label: 'Warm Candle / Fire', desc: 'OSL from below, orange and amber glow' },
+      { icon: 'C', value: 'cold_magic', label: 'Cold Arcane / Magic', desc: 'OSL with blue or teal glow' },
+      { icon: 'D', value: 'dramatic_rim', label: 'Dramatic Rim Light', desc: 'Strong side or back-lit, deep contrast' },
+      { icon: 'E', value: 'battlefield', label: 'Battlefield / Overcast', desc: 'Diffuse grey light, muted tones' },
+      { icon: 'F', value: 'moonlight', label: 'Moonlight / Night', desc: 'Cold desaturated light, deep shadows' }
+    ]
+  },
+  {
+    id: 'metals', name: 'Metals', label: 'The metalwork',
+    text: 'How will you handle any metal elements?',
+    hint: 'Even if minimal, metal treatment defines the technical ambition of the piece.',
+    layout: 'one-col',
+    choices: [
+      { icon: 'A', value: 'nmm_gold', label: 'NMM Gold', desc: 'Non-metallic metal - painted shine with matte paint' },
+      { icon: 'B', value: 'nmm_steel', label: 'NMM Steel / Silver', desc: 'Cold NMM with stark contrast' },
+      { icon: 'C', value: 'tmm', label: 'True Metallic Metal (TMM)', desc: 'Real metallic paints with glazes and polish' },
+      { icon: 'D', value: 'no_metals', label: 'No Significant Metals', desc: 'Organic subject - focus on skin and cloth' }
+    ]
+  },
+  {
+    id: 'competition', name: 'Target', label: 'The competition tier',
+    text: 'What competition level are you targeting?',
+    hint: 'The bar you set determines the level of detail and ambition we advise.',
+    layout: 'one-col',
+    choices: [
+      { icon: 'A', value: 'local', label: 'Local / Club Level', desc: 'Getting into competition painting, first entries' },
+      { icon: 'B', value: 'national', label: 'National - Crystal Brush, Golden Demon', desc: 'Aiming for nominations or category medals' },
+      { icon: 'C', value: 'world', label: 'World Level - Salon du Modelisme, EuroMiniArt', desc: 'Display quality, pushing every boundary' }
+    ]
+  },
+  {
+    id: 'narrative', name: 'Story', label: 'The narrative',
+    text: 'What story or emotion should the viewer feel?',
+    hint: 'Judges reward pieces that create an emotional response.',
+    layout: 'two-col',
+    choices: [
+      { icon: 'A', value: 'defiance', label: 'Defiance / Strength', desc: 'Unyielding, proud, battle-hardened' },
+      { icon: 'B', value: 'melancholy', label: 'Melancholy / Loss', desc: 'Introspective, haunted, quiet grief' },
+      { icon: 'C', value: 'power', label: 'Power / Menace', desc: 'Intimidating, commanding, dangerous' },
+      { icon: 'D', value: 'wonder', label: 'Wonder / Mystique', desc: 'Otherworldly, magical, ethereal' },
+      { icon: 'E', value: 'fury', label: 'Fury / Chaos', desc: 'Rage, battle, violent energy' },
+      { icon: 'F', value: 'peace', label: 'Serenity / Nobility', desc: 'Calm authority, dignity, grace' }
+    ]
+  }
+];
+
+var TOTAL = STEPS.length;
+var state = { screen: 'start', step: 0, answers: {}, labels: {}, result: null, error: null, skinBaseColor: '#c8845a' };
+
+function render() {
+  updateDots();
+  var el = document.getElementById('screen');
+  el.className = '';
+  void el.offsetWidth;
+  el.className = 'fade-up';
+
+  if (state.screen === 'start') el.innerHTML = htmlStart();
+  else if (state.screen === 'questions') el.innerHTML = htmlQuestion();
+  else if (state.screen === 'prompt') el.innerHTML = htmlPrompt();
+
+  bind();
+  setTimeout(function() {
+    var bars = document.querySelectorAll('.crit-bar[data-w]');
+    for (var i = 0; i < bars.length; i++) {
+      bars[i].style.width = bars[i].getAttribute('data-w') + '%';
+    }
+  }, 80);
+}
+
+function updateDots() {
+  var el = document.getElementById('dots');
+  if (state.screen === 'start') { el.innerHTML = ''; return; }
+  var html = '';
+  for (var i = 0; i < TOTAL; i++) {
+    var cls = '';
+    if (i < state.step || state.screen === 'prompt') cls = 'done';
+    else if (i === state.step && state.screen === 'questions') cls = 'active';
+    html += '<div class="dot ' + cls + '"></div>';
+  }
+  el.innerHTML = html;
+}
+
+function htmlStart() {
+  return '<div class="eyebrow">Competition Painting Advisor</div>' +
+    '<h1 class="start-title">Paint your bust with <em>intention</em></h1>' +
+    '<p class="start-body">Answer six focused questions and receive a complete competition strategy: skin tone palette, lighting plan, NMM or TMM approach, judging criteria focus, and a step-by-step painting guide.</p>' +
+    '<div class="feature-grid">' +
+    '<div class="feature-item">Skin tone palettes</div>' +
+    '<div class="feature-item">OSL lighting theory</div>' +
+    '<div class="feature-item">Judging criteria focus</div>' +
+    '<div class="feature-item">NMM / TMM guidance</div>' +
+    '<div class="feature-item">Step-by-step technique plan</div>' +
+    '<div class="feature-item">Narrative storytelling tips</div>' +
+    '</div>' +
+    '<button class="btn-primary" id="start-btn">Begin the Analysis</button>';
+}
+
+function htmlQuestion() {
+  var q = STEPS[state.step];
+  var html = '<div class="q-label">' + q.label + '</div>' +
+    '<h2 class="q-text">' + q.text + '</h2>' +
+    '<p class="q-hint">' + q.hint + '</p>' +
+    '<div class="choices ' + q.layout + '">';
+
+  for (var i = 0; i < q.choices.length; i++) {
+    var c = q.choices[i];
+    html += '<button class="choice-btn" data-value="' + c.value + '" data-label="' + c.label + '">' +
+      '<span class="c-icon">' + c.icon + '</span>' +
+      '<span><strong class="c-strong">' + c.label + '</strong><span class="c-desc">' + c.desc + '</span></span>' +
+      '</button>';
+  }
+
+  html += '</div>';
+
+  // Color picker shown on skin_tone step
+  if (q.id === 'skin_tone') {
+    var col = state.skinBaseColor || '#c8845a';
+    html += '<div class="color-picker-row">' +
+      '<div class="color-picker-label"><strong>Base skin colour</strong>Optional — pick the primary hue of your skin tone</div>' +
+      '<div class="color-preview" style="background:' + col + '" title="Click to pick colour">' +
+      '<input type="color" id="skin-color-input" value="' + col + '">' +
+      '</div>' +
+      '<span class="color-hex" id="color-hex-display">' + col + '</span>' +
+      '</div>';
+  }
+
+  if (state.error) html += '<div class="error-box">' + state.error + '</div>';
+  html += '<div class="nav-row">' +
+    (state.step > 0 ? '<button class="btn-ghost" id="back-btn">Back</button>' : '<span></span>') +
+    '<span class="step-count">' + (state.step + 1) + ' of ' + TOTAL + '</span>' +
+    '</div>';
+  return html;
+}
+
+function htmlPrompt() {
+  var txt = state.generatedPrompt || '';
+  return '<div class="eyebrow">Your prompt is ready</div>' +
+    '<h2 class="q-text" style="margin-bottom:0.5rem">Copy and paste into any AI</h2>' +
+    '<p class="q-hint">Works with Claude.ai, ChatGPT, Gemini, Copilot — any chat AI. Just paste and send.</p>' +
+
+    '<div class="prompt-export-box">' +
+    '<div class="prompt-export-text" id="prompt-text">' + escHtml(txt) + '</div>' +
+    '<div class="prompt-export-footer">' +
+    '<span class="prompt-export-hint">Claude.ai &bull; ChatGPT &bull; Gemini &bull; Copilot</span>' +
+    '<button class="copy-btn" id="copy-btn">Copy prompt</button>' +
+    '</div>' +
+    '</div>' +
+
+    '<div class="nav-row" style="margin-top:1.2rem">' +
+    '<button class="btn-ghost" id="back-btn">Back</button>' +
+    '<button class="btn-primary" id="restart-btn">Start over</button>' +
+    '</div>';
+}
+
+function escHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function buildPrompt() {
+  var a = state.answers;
+  var l = state.labels;
+  return "You are a master competition miniature bust painter with extensive experience at Golden Demon, Crystal Brush, and Salon du Modelisme.\n\n" +
+    "Give me a full competition painting strategy for my bust with these characteristics:\n" +
+    "- Subject: " + (l.subject || a.subject) + "\n" +
+    "- Skin tone family: " + (l.skin_tone || a.skin_tone) + "\n" +
+    "- Primary skin base colour (my chosen hex): " + state.skinBaseColor + "\n" +
+    "- Lighting concept: " + (l.lighting || a.lighting) + "\n" +
+    "- Metal treatment: " + (l.metals || a.metals) + "\n" +
+    "- Target competition level: " + (l.competition || a.competition) + "\n" +
+    "- Emotional narrative: " + (l.narrative || a.narrative) + "\n\n" +
+    "Please give me:\n" +
+    "1. A evocative name and one-sentence theme for this scheme\n" +
+    "2. A skin tone palette of 6-8 colours with hex codes, anchored to my base colour " + state.skinBaseColor + ", showing the full range from deep shadow to brightest highlight with warm/cool temperature shifts\n" +
+    "3. A detailed lighting execution plan - where light hits, angle, intensity, and how OSL or ambient light interacts with the skin\n" +
+    "4. How to reinforce the emotional narrative through colour temperature and contrast choices\n" +
+    "5. Which competition judging criteria to prioritise (skin, contrast, colour harmony, NMM/TMM, narrative, finish) and why\n" +
+    "6. A step-by-step painting plan of 7-9 specific technique-level steps suited to the competition level\n" +
+    "7. One master tip that separates good from great at this level\n" +
+    "8. A limited palette challenge: give me only 5 widely available paints I could use to mix all the skin tones by hand, plus 4-6 specific mix recipes with ratios";
+}
+
+function bind() {
+  var copyBtn = document.getElementById('copy-btn');
+  if (copyBtn) {
+    copyBtn.onclick = function() {
+      var txt = state.generatedPrompt || '';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(txt).then(function() {
+          copyBtn.textContent = 'Copied!';
+          copyBtn.className = 'copy-btn copied';
+          setTimeout(function() { copyBtn.textContent = 'Copy prompt'; copyBtn.className = 'copy-btn'; }, 2200);
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        copyBtn.textContent = 'Copied!';
+        copyBtn.className = 'copy-btn copied';
+        setTimeout(function() { copyBtn.textContent = 'Copy prompt'; copyBtn.className = 'copy-btn'; }, 2200);
+      }
+    };
+  }
+
+  var startBtn = document.getElementById('start-btn');
+  if (startBtn) startBtn.onclick = function() {
+    state.screen = 'questions'; state.step = 0; state.answers = {}; state.labels = {};
+    render();
+  };
+
+  var backBtn = document.getElementById('back-btn');
+  if (backBtn) backBtn.onclick = function() {
+    if (state.screen === 'prompt') {
+      state.screen = 'questions';
+      state.step = TOTAL - 1;
+    } else {
+      var prev = STEPS[state.step - 1];
+      if (prev) { delete state.answers[prev.id]; delete state.labels[prev.id]; }
+      state.step--;
+    }
+    state.error = null;
+    render();
+  };
+
+  var restartBtn = document.getElementById('restart-btn');
+  if (restartBtn) restartBtn.onclick = function() {
+    state = { screen: 'start', step: 0, answers: {}, labels: {}, result: null, error: null, skinBaseColor: '#c8845a', generatedPrompt: '' };
+    render();
+  };
+
+  var colorInput = document.getElementById('skin-color-input');
+  if (colorInput) {
+    colorInput.addEventListener('input', function() {
+      state.skinBaseColor = colorInput.value;
+      var preview = colorInput.parentElement;
+      preview.style.background = colorInput.value;
+      var hexDisplay = document.getElementById('color-hex-display');
+      if (hexDisplay) hexDisplay.textContent = colorInput.value;
+    });
+  }
+
+  var btns = document.querySelectorAll('.choice-btn');
+  for (var i = 0; i < btns.length; i++) {
+    (function(btn) {
+      btn.onclick = function() {
+        var q = STEPS[state.step];
+        state.answers[q.id] = btn.getAttribute('data-value');
+        state.labels[q.id] = btn.getAttribute('data-label');
+        if (state.step < TOTAL - 1) {
+          state.step++;
+          state.error = null;
+          render();
+        } else {
+          state.generatedPrompt = buildPrompt();
+          state.screen = 'prompt';
+          render();
+        }
+      };
+    })(btns[i]);
+  }
+}
+
+render();
+</script>
+</body>
+</html>
