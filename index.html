@@ -772,6 +772,21 @@ var STEPS = [
       { icon: 'E', value: 'fury', label: 'Fury / Chaos', desc: 'Rage, battle, violent energy' },
       { icon: 'F', value: 'peace', label: 'Serenity / Nobility', desc: 'Calm authority, dignity, grace' }
     ]
+  },
+  {
+    id: 'brands', name: 'Paints', label: 'Your paint range',
+    text: 'Which paint brands do you use?',
+    hint: 'Select all that you have. Recommendations will use paints from these ranges.',
+    layout: 'two-col',
+    multi: true,
+    choices: [
+      { icon: 'A', value: 'kimera', label: 'Kimera Kolors', desc: 'Pure pigment, highly mixable' },
+      { icon: 'B', value: 'army_painter', label: 'Army Painter', desc: 'Speedpaints and traditional range' },
+      { icon: 'C', value: 'vallejo', label: 'Vallejo', desc: 'Model Colour, Game Colour, panzer aces' },
+      { icon: 'D', value: 'ionic', label: 'Ionic', desc: 'High pigment density, smooth layering' },
+      { icon: 'E', value: 'citadel', label: 'Citadel / GW', desc: 'Base, Layer, Contrast, technical paints' },
+      { icon: 'F', value: 'ak_interactive', label: 'AK Interactive', desc: 'True Colours, 3rd gen acrylics' }
+    ]
   }
 ];
 
@@ -1088,6 +1103,14 @@ function buildPrompt() {
   var nmmCount = Array.isArray(metals) ? metals.filter(function(v) { return v.indexOf('nmm') === 0; }).length : 0;
   var lpPaintCount = nmmCount >= 2 ? '7' : '5';
 
+  var brands = state.answers.brands || [];
+  var brandLabels = Array.isArray(brands) && brands.length > 0
+    ? (state.labels.brands || brands.join(', '))
+    : 'any widely available brand';
+  var brandsInstruction = Array.isArray(brands) && brands.length > 0
+    ? 'Name paints using exact product names from these brands only: ' + brandLabels + '. If a colour is not available in those ranges, choose the closest equivalent that is.'
+    : 'Use widely available paint names.';
+
   return 'You are a master competition miniature bust painter with extensive experience at Golden Demon, Crystal Brush, and Salon du Modelisme.\n\n' +
     'Give me a full competition painting strategy for my bust:\n' +
     '- Subject: ' + (l.subject || a.subject) + '\n' +
@@ -1096,13 +1119,16 @@ function buildPrompt() {
     '- Lighting concept: ' + (l.lighting || a.lighting) + '\n' +
     '- Metal treatment: ' + (state.labels.metals || (Array.isArray(metals) ? metals.join(', ') : metals)) + '\n' +
     '- Target competition level: ' + (l.competition || a.competition) + '\n' +
-    '- Emotional narrative: ' + (l.narrative || a.narrative) + '\n\n' +
+    '- Emotional narrative: ' + (l.narrative || a.narrative) + '\n' +
+    '- Paint brands available: ' + brandLabels + '\n\n' +
     'IMPORTANT: Reply with ONLY a single raw JSON object. No explanation, no markdown, no text before or after. ' +
     'Start your response with { and end with }. Use only straight quotes. ' +
     'The palette should have 6-8 entries anchored to the base colour ' + state.skinBaseColor + ' with shadows darker and highlights lighter. ' +
+    brandsInstruction + ' ' +
     'Criteria scores (0-100) represent how much to prioritise each area for this specific bust. ' +
     'Steps should be 7-9 entries. ' +
-    'Limited palette should use exactly ' + lpPaintCount + ' widely available paints' + (lpPaintCount === '7' ? ' — the extra paints should cover the additional NMM metal types selected (' + metals.filter(function(v) { return v.indexOf('nmm') === 0; }).join(', ') + ')' : '') + '.\n\n' +
+    'Limited palette should use exactly ' + lpPaintCount + ' paints' + (lpPaintCount === '7' ? ' — the extra paints should cover the additional NMM metal types selected (' + metals.filter(function(v) { return v.indexOf('nmm') === 0; }).join(', ') + ')' : '') + '. ' +
+    brandsInstruction + '\n\n' +
     'Use exactly this JSON structure:\n' + schema;
 }
 
