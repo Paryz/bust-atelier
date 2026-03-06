@@ -119,20 +119,24 @@ html, body {
   margin-bottom: 1.8rem;
 }
 
-.feature-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
-.feature-item {
-  background: var(--white);
+.feature-tag {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
   border: 1px solid var(--border);
-  padding: 0.6rem 0.9rem;
-  font-size: 0.88rem;
-  color: var(--graphite);
-  border-radius: 2px;
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
 }
 
 /* QUESTION */
@@ -831,16 +835,20 @@ function htmlStart() {
   var pasted = state.pastedResponse || '';
   return '<div class="eyebrow">Competition Painting Advisor</div>' +
     '<h1 class="start-title">Paint your bust with <em>intention</em></h1>' +
-    '<p class="start-body">Answer six focused questions and receive a tailored prompt to paste into any AI. Or if you already have an AI response, paste it below to render it as a visual guide.</p>' +
-    '<div class="feature-grid">' +
-    '<div class="feature-item">Skin tone palettes</div>' +
-    '<div class="feature-item">OSL lighting theory</div>' +
-    '<div class="feature-item">Judging criteria focus</div>' +
-    '<div class="feature-item">NMM / TMM guidance</div>' +
-    '<div class="feature-item">Step-by-step technique plan</div>' +
-    '<div class="feature-item">Narrative storytelling tips</div>' +
+    '<p class="start-body">Answer seven focused questions and receive a tailored prompt to paste into any AI. Or if you already have an AI response, paste it below to render it as a visual guide.</p>' +
+    '<div style="text-align:center;margin-bottom:1.8rem">' +
+    '<button class="btn-primary" id="start-btn" style="padding:1.1rem 3rem;font-size:0.85rem;letter-spacing:0.2em">Build my prompt</button>' +
     '</div>' +
-    '<button class="btn-primary" id="start-btn">Build my prompt</button>' +
+    '<p style="font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:0.75rem">7 questions about</p>' +
+    '<div class="feature-tags">' +
+    '<span class="feature-tag">Subject type</span>' +
+    '<span class="feature-tag">Skin tone</span>' +
+    '<span class="feature-tag">Lighting concept</span>' +
+    '<span class="feature-tag">Metal treatment</span>' +
+    '<span class="feature-tag">Competition level</span>' +
+    '<span class="feature-tag">Narrative emotion</span>' +
+    '<span class="feature-tag">Paint brands</span>' +
+    '</div>' +
 
     '<div class="start-divider"><span>or</span></div>' +
 
